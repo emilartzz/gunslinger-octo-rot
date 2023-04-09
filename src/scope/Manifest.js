@@ -1,0 +1,103 @@
+//------------------------------------------------------------------------------
+// Namespace
+//------------------------------------------------------------------------------
+
+/**
+ * The application namespace.
+ * 
+ * @namespace Gunslinger
+ */
+var Gunslinger = function() {
+
+    //--------------------------------------------------------------------------
+    // Public static scope
+    //--------------------------------------------------------------------------
+    
+    /**
+     * Public scope.
+     *
+     * @type {Object}
+     * @private
+     */
+    var m_this = {};
+
+    //--------------------------------------------------------------------------
+    // Package structure
+    //--------------------------------------------------------------------------
+    
+    /**
+     * This package contains classes that represent data, or that are used to 
+     * manage data. Data can consist of concrete information, or of raw data 
+     * such as resource files.
+     *
+     * @namespace data
+     * @memberof Gunslinger
+     * @since 1.0
+     */
+    m_this.data = {};
+    
+    /**
+     * This package includes the scenes that make up the application. Scenes 
+     * are used to represent graphical parts (also known as views) of an 
+     * application.
+     *
+     * @namespace scene
+     * @memberof Gunslinger
+     * @since 1.0
+     */
+    m_this.scene = {};
+
+    /**
+     * This package contains the application's most vital classes.
+     *
+     * @namespace system
+     * @memberof Gunslinger
+     * @since 1.0
+     */
+    m_this.system = {};
+
+    /**
+     * This package contains the application's entity classes.
+     *
+     * @namespace entity
+     * @memberof Gunslinger
+     * @since 1.0
+     */
+    m_this.entitites = {};
+
+    /**
+     * This package contains the application's ui classes.
+     *
+     * @namespace ui
+     * @memberof Gunslinger
+     * @since 1.0
+     */
+    m_this.ui = {};
+    
+    //--------------------------------------------------------------------------
+    // Return public scope object
+    //--------------------------------------------------------------------------
+
+    /**
+     * Public scope.
+     */
+    return m_this;
+}();
+
+//------------------------------------------------------------------------------
+// Public static methods
+//------------------------------------------------------------------------------
+
+/**
+ * The secret bootstrap. This method enables simple startup of the application, 
+ * without knowledge of the internal package structure or the classes included 
+ * in it.
+ *
+ * @ignore
+ */
+Gunslinger.bootstrap = function(callback) {
+    var app = new Gunslinger.system.Main();
+        app.start(callback);
+        
+    return app;
+};
