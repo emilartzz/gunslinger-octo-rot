@@ -1,0 +1,22 @@
+{
+  "Pistol":{
+    "type":"Pistol",
+    "cooldown": 0.1,
+    "image": "weapon_glock"
+  },
+  "Revolver":{
+    "type":"Pistol",
+    "cooldown": 1,
+    "image": "weapon_revolver"
+  },
+  "Shotgun":{
+    "type":"Shotgun",
+    "cooldown": 1.5,
+    "image": "weapon_shotgun"
+  },
+  "Rifle":{
+    "type":"Rifle",
+    "cooldown": 0.5,
+    "image": "weapon_rifle"
+  }
+}

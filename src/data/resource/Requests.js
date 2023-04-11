@@ -44,6 +44,8 @@ Gunslinger.data.Requests.prototype.constructor = Gunslinger.data.Requests;
 Gunslinger.data.Requests.prototype.m_construct = function() {
     rune.resource.Requests.prototype.m_construct.call(this);
     this.add("arena_1", "./../asset/json/arenas/arena_1.json");
+	this.add("characters", "./../asset/props/characters.json");
+	this.add("weapons", "./../asset/props/weapons.json");
 	this.add("body_tux", "./../asset/sprites/characters/player/bodies/body_tux.png");
 	this.add("head_mohawk", "./../asset/sprites/characters/player/heads/head_mohawk.png");
 	this.add("legs_cowboy", "./../asset/sprites/characters/player/legs/legs_cowboy.png");
