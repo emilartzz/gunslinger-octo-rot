@@ -16,7 +16,7 @@ class Player extends rune.display.Sprite {
     this.gs_playerSpeed = 2;
     this.gs_playerLife = 100;
     this.gs_playerScore = 0;
-    this.gs_playerWeapon = 'AK-47';
+    this.gs_playerWeapon = 0;
   }
 
   init() {
@@ -74,7 +74,7 @@ class Player extends rune.display.Sprite {
     if (this.gamepad) {
       this.updateGamepad();
     }
-    else{
+    else {
       this.updateKeyboard();
     }
   }
@@ -99,34 +99,51 @@ class Player extends rune.display.Sprite {
       this.x += this.gs_playerSpeed;
     }
 
-    if (keyboard.pressed("X")){
-      if (keyboard.pressed("C")){
+    if (keyboard.pressed(this.gs_playerKeys[this.gs_playerID].DEBUG)) {
+      if (keyboard.pressed("C")) {
         this.setPlayerLife(this.getPlayerLife() - 10);
       }
-      if (keyboard.pressed("V")){
+      if (keyboard.pressed("V")) {
         this.setPlayerLife(this.getPlayerLife() + 10);
       }
-      if (keyboard.pressed("B")){
+      if (keyboard.pressed("B")) {
         this.setPlayerLife(100);
       }
-      if (keyboard.pressed("N")){
+      if (keyboard.pressed("N")) {
         this.setPlayerLife(0);
       }
-      if (keyboard.pressed("J")){
+      if (keyboard.pressed("J")) {
         this.setPlayerScore(this.getPlayerScore() + 50);
       }
-      if (keyboard.pressed("K")){
+      if (keyboard.pressed("K")) {
         this.setPlayerScore(this.getPlayerScore() - 50);
       }
-      if (keyboard.pressed("L")){
+      if (keyboard.pressed("L")) {
         this.setPlayerScore(0);
       }
 
-      if (keyboard.pressed("U")){
-        this.setPlayerWeapon("AK-47");
+      if (keyboard.pressed("U")) {
+        console.log("Player " + this.gs_playerID + " has weapon " + this.getPlayerWeapon() + " and " + this.getPlayerLife() + " life points.");
+        // go to previous weapon in the array of gs_playerWeapons
+        let currentWeapon = this.getPlayerWeapon();
+        let currentWeaponIndex = this.gs_playerWeapons.indexOf(currentWeapon);
+        let nextWeaponIndex = currentWeaponIndex - 1;
+        if (nextWeaponIndex < 0) {
+          nextWeaponIndex = this.gs_playerWeapons.length - 1;
+        }
+        this.setPlayerWeapon(this.gs_playerWeapons[nextWeaponIndex]);
       }
-      if (keyboard.pressed("I")){
-        this.setPlayerWeapon("M4A1");
+      if (keyboard.pressed("I")) {
+
+        // go to next weapon in the array of gs_playerWeapons
+        let currentWeapon = this.getPlayerWeapon();
+        let currentWeaponIndex = this.gs_playerWeapons.indexOf(currentWeapon);
+        let nextWeaponIndex = currentWeaponIndex + 1;
+        if (nextWeaponIndex >= this.gs_playerWeapons.length) {
+          nextWeaponIndex = 0;
+        }
+        this.setPlayerWeapon(this.gs_playerWeapons[nextWeaponIndex]);
+
       }
     }
 
@@ -165,12 +182,40 @@ Player.prototype.gs_playerKeys = {
     DOWN: "S",
     LEFT: "A",
     RIGHT: "D",
-
+    DEBUG: "Z",
   },
   1: {
     UP: "UP",
     DOWN: "DOWN",
     LEFT: "LEFT",
     RIGHT: "RIGHT",
+    DEBUG: "X",
   }
 };
+
+Player.prototype.gs_playerWeapons = {
+  0: {
+    "name": "Pistol",
+    "type": "Pistol",
+    "cooldown": 0.1,
+    "image": "weapon_glock"
+  },
+  1: {
+    "name": "Revolver",
+    "type": "Pistol",
+    "cooldown": 1,
+    "image": "weapon_revolver"
+  },
+  2: {
+    "name": "Shotgun",
+    "type": "Shotgun",
+    "cooldown": 1.5,
+    "image": "weapon_shotgun"
+  },
+  3: {
+    "name": "Rifle",
+    "type": "Rifle",
+    "cooldown": 0.5,
+    "image": "weapon_rifle"
+  }
+}

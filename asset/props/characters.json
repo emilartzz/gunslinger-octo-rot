@@ -1,0 +1,39 @@
+{ 
+  "playable": {
+    "name": "Playable Characters",
+    "description": "Characters that can be played by the player.",
+    "Cowboy": {
+      "name": "Cowboy",
+      "description": "A cowboy.",
+      "health": 100,
+      "damage": 12,
+      "speed": 4,
+      "attack": "pistol",
+      "defense": "hat",
+      "special": "revolver"
+    },
+    "Soldier": {
+      "name": "Soldier",
+      "description": "A soldier.",
+      "health": 100,
+      "damage": 8,
+      "speed": 7,
+      "attack": "rifle",
+      "defense": "helmet",
+      "special": "grenade"
+    },
+    "Ninja": {
+      "name": "Ninja",
+      "description": "A ninja.",
+      "health": 80,
+      "damage": 10,
+      "speed": 10,
+      "attack": "sword",
+      "defense": "armor",
+      "special": "shuriken"
+    }
+  },
+  "non-playable": {
+    
+  }
+}

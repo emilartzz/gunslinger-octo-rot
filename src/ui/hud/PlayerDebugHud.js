@@ -47,14 +47,6 @@ class PlayerDebugHud extends rune.display.DisplayObjectContainer{
 
   update(step) {
     super.update();
-
-    this.scoreCounter.text = this.gs_playerScore[0];
-    this.healthCounter.text = this.gs_playerHealth[0];
-    this.weaponInfo.text = this.gs_playerWeapon[0];
-
-    // console.log(this.gs_playerHealth);
-    // console.log(this.gs_playerScore);
-    // console.log(this.gs_playerWeapon);
   }
 
   dispose() {
@@ -62,14 +54,17 @@ class PlayerDebugHud extends rune.display.DisplayObjectContainer{
   }
 
   setPlayerHealth(player, health) {
+    console.log("Setting health for player " + player + " to " + health);
     this.gs_playerHealth[player] = health;
   }
 
   setPlayerScore(player, score) {
+    console.log("Setting score for player " + player + " to " + score);
     this.gs_playerScore[player] = score;
   }
 
   setPlayerWeapon(player, weapon) {
+    console.log("Setting weapon for player " + player + " to " + weapon);
     this.gs_playerWeapon[player] = weapon;
   }
 
@@ -78,6 +73,10 @@ class PlayerDebugHud extends rune.display.DisplayObjectContainer{
     this.setPlayerHealth(player, health);
     this.setPlayerScore(player, score);
     this.setPlayerWeapon(player, weapon);
+
+    this.scoreCounter.text = this.gs_playerScore[player].toString();
+    this.healthCounter.text = this.gs_playerHealth[player].toString();
+    this.weaponInfo.text = this.gs_playerWeapon[player].toString();
   }
 
 }

@@ -36,9 +36,6 @@ class Game extends rune.scene.Scene {
       this.gs_activePlayers.push(player);
     }
 
-    console.log(this.debugHuds);
-    console.log(this.gs_activePlayers);
-
 
     this.stage.forEachChild((child) => {
       child.debug = true;
