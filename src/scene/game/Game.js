@@ -9,15 +9,20 @@ class Game extends rune.scene.Scene {
     this.gs_players = players;
     this.gs_activePlayers = new Array();
     this.debugHuds = new Array();
+    this.m_cams = new Array();
   }
 
   init() {
     super.init();
+    this.cameras.removeCameras(true);
 
     const w = this.application.screen.width;
     const h = this.application.screen.height;
 
     console.log(this);
+
+    this.stage.backgroundColor = "0xFFFFFFFFF";
+    this.m_cams[0] = this.cameras.createCamera(0, 0, w, h);
 
     for (var i = 0; i < this.gs_players; i++) {
       const player = new Player(i);
@@ -34,8 +39,15 @@ class Game extends rune.scene.Scene {
 
       this.stage.addChild(player);
       this.gs_activePlayers.push(player);
+
+      this.m_cams[0].targets.add(player);
     }
 
+    this.cameras.addCamera(this.m_cams[0]);
+
+    console.log(this.m_cams[0]);
+
+    this.stage.map.load('test');
 
     this.stage.forEachChild((child) => {
       child.debug = true;

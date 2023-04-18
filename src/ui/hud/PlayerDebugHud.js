@@ -54,17 +54,17 @@ class PlayerDebugHud extends rune.display.DisplayObjectContainer{
   }
 
   setPlayerHealth(player, health) {
-    console.log("Setting health for player " + player + " to " + health);
+    // console.log("Setting health for player " + player + " to " + health);
     this.gs_playerHealth[player] = health;
   }
 
   setPlayerScore(player, score) {
-    console.log("Setting score for player " + player + " to " + score);
+    // console.log("Setting score for player " + player + " to " + score);
     this.gs_playerScore[player] = score;
   }
 
   setPlayerWeapon(player, weapon) {
-    console.log("Setting weapon for player " + player + " to " + weapon);
+    // console.log("Setting weapon for player " + player + " to " + weapon);
     this.gs_playerWeapon[player] = weapon;
   }
 
